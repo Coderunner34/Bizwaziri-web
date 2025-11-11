@@ -9,91 +9,80 @@ import { TransformationCaseStudies } from './components/TransformationCaseStudie
 import { TransformationProcess } from './components/TransformationProcess';
 import { EducationalHub } from './components/EducationalHub';
 import { CleanServices } from './components/CleanServices';
+import { ServicesAndPricing } from './components/ServicesAndPricing';
 import { CleanTestimonials } from './components/CleanTestimonials';
+import { CleanFAQ } from './components/CleanFAQ';
 import { EnhancedContact } from './components/EnhancedContact';
+import { ServiceAgreement } from './components/ServiceAgreement';
 import { ProfessionalFooter } from './components/ProfessionalFooter';
 import { BookingModal } from './components/BookingModal';
-import { CleanFAQ } from './components/CleanFAQ';
-import { ServiceAgreement } from './components/ServiceAgreement';
-
-import {ServicesAndPricing} from './components/ServicesAndPricing';
-
-
 
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-
-  
-
+  const [isServiceAgreementOpen, setIsServiceAgreementOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white">
       {/* Toast notifications */}
       <Toaster position="top-right" />
-      
+
       {/* Navigation */}
       <ProfessionalNav onBookingClick={() => setIsBookingModalOpen(true)} />
-      
+
       {/* Main Content */}
       <main>
-        {/* Hero Section - Cinematic video background */}
+        {/* Hero */}
         <CinematicHero onBookingClick={() => setIsBookingModalOpen(true)} />
-        
-        {/* Business Crisis Section - Emotional pain points */}
+
+        {/* Business Crisis / About */}
         <BusinessCrisisSection />
-        
-        {/* About Story - Who we are and why we exist */}
         <AboutStory />
-        
-        {/* Transformation Case Studies - Real results with metrics */}
+
+        {/* Transformation Case Studies */}
         <TransformationCaseStudies />
-        
-        
-        {/* ROI Calculator - Interactive tool */}
+
+        {/* ROI Calculator */}
         <ROICalculator />
-        
-        {/* Services - Solutions, not just services */}
+
+        {/* Services & Pricing */}
         <section id="services">
           <CleanServices onBookingClick={() => setIsBookingModalOpen(true)} />
+          <ServicesAndPricing onBookingClick={() => setIsBookingModalOpen(true)} />
         </section>
-          {/* Services and Pricing */}  
 
-<section id="services">
-  <CleanServices onBookingClick={() => setIsBookingModalOpen(true)} />
-  <ServicesAndPricing onBookingClick={() => setIsBookingModalOpen(true)} />
-</section>
-
-        
-
-        {/* Transformation Process - How we work */}
+        {/* Transformation Process */}
         <TransformationProcess />
-        
-        {/* Educational Hub - Teaching what we do */}
+
+        {/* Educational Hub */}
         <section id="education">
           <EducationalHub />
         </section>
-        
-        {/* Testimonials - Social proof */}
+
+        {/* Testimonials */}
         <section id="testimonials">
           <CleanTestimonials />
         </section>
-          {/* FAQ Section */}
-        <section id="faq">
-    <CleanFAQ />
-  </section>
-  
 
-        {/* Contact Section */}
+        {/* FAQ */}
+        <section id="faq">
+          <CleanFAQ />
+        </section>
+
+        {/* Contact & Agreement */}
         <EnhancedContact onBookingClick={() => setIsBookingModalOpen(true)} />
+        <ServiceAgreement
+          isOpen={isServiceAgreementOpen}
+          onClose={() => setIsServiceAgreementOpen(false)}
+        />
       </main>
 
       {/* Footer */}
       <ProfessionalFooter />
-      
+
       {/* Booking Modal */}
-      <BookingModal 
-        isOpen={isBookingModalOpen} 
-        onClose={() => setIsBookingModalOpen(false)} 
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
       />
     </div>
   );
